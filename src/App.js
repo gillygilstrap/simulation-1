@@ -18,14 +18,20 @@ class App extends Component {
     }
     
     
+    
    componentDidMount() {
      axios.get('/products')
      .then(res => {
        this.setState({
          inventory: res.data
        })
+       console.log('Mounting Over and Over')
+       
 
      })
+     if (this.state.inventory === []) {
+      //  this.componentDidMount
+     }
     }
    editPost(post) {
      this.setState({
@@ -60,17 +66,3 @@ class App extends Component {
 export default App;
 
 
-/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header> */

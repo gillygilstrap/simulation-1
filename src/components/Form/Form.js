@@ -82,7 +82,16 @@ import './form.css'
     handleClickEdit(){
     const {name , price, imgUrl, currentItemId} = this.state;
     axios.put(`/products/${currentItemId}`, {name: name, price: price, imgUrl: imgUrl})
+
+    this.setState({
+        name: '',
+        price: 0,
+        imgUrl: '',
+        currentItemId: null
+    })
+    this.props.func();
     }
+
 
 
   render() {

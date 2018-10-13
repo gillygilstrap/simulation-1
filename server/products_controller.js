@@ -8,7 +8,6 @@ module.exports = {
     
         .then( inventory => {
             res.send(inventory)
-            // console.log('I got hit', inventory)
         } )
         
         .catch( err => {
@@ -24,11 +23,10 @@ module.exports = {
         .then( () => res.sendStatus(200) )
         .catch(err => {
             res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
-            console.error("error in create method", err) 
+            console.error("---------------------error in create method------------------------------", err) 
         })
     },
     deleteItem: (req,res,nex) => {
-        // console.log('new delete got hit')
         const db = req.app.get('db')
         const {id} = req.params;
 
@@ -40,42 +38,17 @@ module.exports = {
             })
     },
     editItem: (req,res,next) => {
-        console.log(req.params, req.body)
         const db = req.app.get('db');
         const {id} = req.params;
         const {price, name, imgUrl} = req.body;
 
-        db.edit_product()
+        db.edit_product([id,name,price,imgUrl])
+        .then( () => res.status(200))
+        .catch( err => {
+            res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
+            console.log('---------------------Error in Edit method--------------------', err)       
+            })
     }
        
 }
 
-// delete: (req,res,next) => {
-//     const db = req.app.get('db')
-//     const {id} = req.params;
-
-//     db.delete_product([id])
-//     .then( () => res.sendStatus(200) )
-//     .catch( err => {
-//     res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
-//     console.log('---------------------Error in delete method--------------------', err)       
-//     })
-// }
-
-
-
-// db.create_product([name, price, imgUrl])
-// .then( () => res.sendStatus(200) )
-// .catch( err => {
-// res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
-// console.error("error in create method", err)
-// create: (req, res, next) => {
-//     const db = req.app.get('db');
-//     const { name, description, price, image_url } = req.body;
-
-//     db.create_product([name, description, price, image_url])
-//     .then( () => res.sendStatus(200) )
-//     .catch( err => {
-//         res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
-//         console.error("error in create method", err)
-//     });
