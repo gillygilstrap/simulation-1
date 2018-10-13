@@ -1,0 +1,16 @@
+.header {
+    height: 10vh;
+    display: flex;
+    background: yellow;
+    margin-bottom: 60px;
+}
+
+.header i {
+    color: black;
+    font-size: 8vh;
+    margin-left: 5vw;
+}
+
+.header h1 {
+    margin-left: 10vw;
+}
