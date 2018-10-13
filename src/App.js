@@ -30,12 +30,14 @@ class App extends Component {
    editPost(post) {
      this.setState({
        currentItem: post
-     })
- 
+     });
+     
    }   
 
   
   render() {
+    // console.log("----------------", this.state.currentItem)
+    // const {currentItem} = this.state.currentItem
     return (
       <div className="App">
       <Header />
@@ -45,7 +47,7 @@ class App extends Component {
           </div> 
 
           <div className="right-col">
-          <Form curItem = {this.state.currentItem} func={this.componentDidMount}/>
+          <Form curItem={this.state.currentItem} func={this.componentDidMount}/>
           </div> 
         </div>
         

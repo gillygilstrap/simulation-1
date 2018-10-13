@@ -17,7 +17,7 @@ import axios from 'axios';
       
     })
     props.func()
-    console.log('is this working', props.inventory)
+    // console.log('is this working', props.inventory)
   }
 
    

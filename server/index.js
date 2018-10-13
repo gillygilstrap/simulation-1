@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 app.get('/products', productController.getInventory)
 app.post('/products', productController.newItem)
 app.delete('/products/:id', productController.deleteItem)
+app.put('/products/:id', productController.editItem)
 // app.get('/api/products', productController.getAll)
 // app.get('/api/products/:id', productController.getOne)
 // app.put('/api/products/:id', productController.update)

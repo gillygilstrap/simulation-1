@@ -28,7 +28,7 @@ module.exports = {
         })
     },
     deleteItem: (req,res,nex) => {
-        console.log('new delete got hit')
+        // console.log('new delete got hit')
         const db = req.app.get('db')
         const {id} = req.params;
 
@@ -38,6 +38,14 @@ module.exports = {
             res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
             console.log('---------------------Error in delete method--------------------', err)       
             })
+    },
+    editItem: (req,res,next) => {
+        console.log(req.params, req.body)
+        const db = req.app.get('db');
+        const {id} = req.params;
+        const {price, name, imgUrl} = req.body;
+
+        db.edit_product()
     }
        
 }
